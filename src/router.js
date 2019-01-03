@@ -57,6 +57,10 @@ export default new Router({
       path:'/user4/:id',
       name:'user4',
       component:user4
+    },
+    {
+      path:'*',
+      redirect:'/'
     }
   ]
 })
