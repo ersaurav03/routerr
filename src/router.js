@@ -36,8 +36,9 @@ export default new Router({
       path:'',
       component: nestchild
     },
-    { path:':id', component:user2 },
-    { path:':id/user3',component:user3 }
+    { path:'/user2', component:user2 },
+    { path:'/user3',component:user3 }
+    // {path:'/user4',component:user4} ia m not inerited the user4 4 due to this it is not working
     ]},
     
     {
