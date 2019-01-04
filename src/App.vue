@@ -5,8 +5,10 @@
      <!--  <h1>JSMPJ Routing</h1> -->
      <h1>Routing</h1>
      <hr>
-     <Header></Header>
+   <!--   <Header></Header> -->
+     <router-view name="header-top"></router-view>
      <router-view></router-view>
+     <router-view name="header-bottom"></router-view>
     </div>
   </div>
 </div>

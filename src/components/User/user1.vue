@@ -3,7 +3,8 @@
 	<h1>I Am user 1</h1>
 	<p>Page lode id :{{id}}</p>
 	<!-- <button type="button" class="btn btn-primary" @click="navigateToHome">Home</button> -->
-	<router-link tag="button" to="/" class="btn btn-primary">Home</router-link>
+	<router-link :to="{name:'home', query: { locale: 'en', q:00} }" class="btn btn-primary">Home</router-link>
+	
 	<hr>
 	<router-view></router-view>
 </div>

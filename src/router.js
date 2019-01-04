@@ -1,12 +1,48 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import user1 from './components/User/user1.vue';
-import user2 from './components/User/user2.vue';
-import user3 from './components/User/user3.vue';
-import user4 from './components/User/user4.vue';
-import nestchild from './components/User/nestchild.vue'
+// import user1 from './components/User/user1.vue';
+// import user2 from './components/User/user2.vue';
+// import user3 from './components/User/user3.vue';
+// import user4 from './components/User/user4.vue';
+// import nestchild from './components/User/nestchild.vue';
+// import Header from './components/Header.vue';
 
+const user1 = resolve => {
+require.ensure(['./components/User/user1.vue'], () => {
+resolve(require('./components/User/user1.vue'));
+});
+} ;
+
+const user2 = resolve => {
+  require.ensure(['./components/User/user2.vue'],() => {
+  resolve(require('./components/User/user2.vue'));
+  });
+};
+
+const user3 = resolve => {
+  require.ensure(['./components/User/user3.vue'],() => {
+  resolve(require('./components/User/user3.vue'));
+  });
+};
+
+const user4 = resolve => {
+  require.ensure(['./components/User/user4.vue'],() => {
+  resolve(require('./components/User/user4.vue'));
+  });
+};
+
+const nestchild = resolve => {
+  require.ensure(['./components/User/nestchild.vue'],() => {
+  resolve(require('./components/User/nestchild.vue'));
+  });
+};
+
+const Header = resolve => {
+  require.ensure(['./components/Header.vue'],() => {
+  resolve(require('./components/Header.vue'));
+  });
+};
 Vue.use(Router)
 
 export default new Router({
@@ -43,14 +79,19 @@ export default new Router({
     
     {
     path: '/user2/:id',
-    name: 'user2',
-    component: user2
+    // name: 'user2',
+    components: {
+      default: user2,
+      'header-top':Header
+    }
     },
 
     {
       path: '/user3/:id',
-      name:'user3',
-      component:user3
+      // name:'user3',
+      components: {
+      default: user3,
+      'header-bottom':Header
     },
     
     {
@@ -61,6 +102,11 @@ export default new Router({
     {
       path:'*',
       redirect:'/'
-    }
+    },
+    { path:'redirect-me',redirect:'/user1'}
   ]
-})
+}),
+router.beforeEach((to,from,next) => {
+  console.log('global beforeEach');
+  next();
+});
